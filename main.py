@@ -1,47 +1,45 @@
 from bs4 import BeautifulSoup
-import requests, sqlite3, time, re
+import requests
+import sqlite3
+import logging
 
-# Function to create SQLite table
+# Initialize logging
+logging.basicConfig(filename='gp_finder.log', level=logging.INFO)
+
+def db_connect():
+    return sqlite3.connect('gp_data.db')
+
 def create_table():
-    conn = sqlite3.connect('gp_data.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS gp_info
-                 (Name TEXT, Address TEXT, Phone TEXT, 
-                 Accepting_New_Patients BOOLEAN, 
-                 Accepts_Out_of_Area_Registrations BOOLEAN, 
-                 Online_Registration_Available BOOLEAN,
-                 Average_Rating REAL)''')
-    conn.commit()
-    conn.close()
+    with db_connect() as conn:
+        c = conn.cursor()
+        c.execute('''CREATE TABLE IF NOT EXISTS gp_info
+                     (ID INTEGER PRIMARY KEY AUTOINCREMENT, 
+                     Name TEXT, Address TEXT, Phone TEXT, 
+                     Accepting_New_Patients BOOLEAN,
+                     Accepts_Out_of_Area_Registrations BOOLEAN, 
+                     Online_Registration_Available BOOLEAN,
+                     Average_Rating REAL)''')
+        conn.commit()
 
-# Function to insert data into SQLite table
 def insert_data(gp_data):
-    conn = sqlite3.connect('gp_data.db')
-    c = conn.cursor()
-    for data in gp_data:
-        c.execute("INSERT INTO gp_info VALUES (?, ?, ?, ?, ?, ?, ?)",
-                  (data['Name'], data['Address'], data['Phone'],
-                   data['Accepting New Patients'], 
-                   data['Accepts Out of Area Registrations'], 
-                   data['Online Registration Available'],
-                   data.get('Average Rating', None)))
-    conn.commit()
-    conn.close()
+    with db_connect() as conn:
+        c = conn.cursor()
+        for data in gp_data:
+            c.execute("INSERT INTO gp_info (Name, Address, Phone, Accepting_New_Patients, Accepts_Out_of_Area_Registrations, Online_Registration_Available) VALUES (?, ?, ?, ?, ?, ?)",
+                      (data['Name'], data['Address'], data['Phone'], data['Accepting New Patients'], data['Accepts Out of Area Registrations'], data['Online Registration Available']))
+        conn.commit()
 
-# Function to scrape data
-def scrape_data():
-    # Hardcoded URL for a specific postcode
-    url = "https://www.nhs.uk/service-search/find-a-gp/results/SW12%209LQ"
+def scrape_data(url):
+    try:
+        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+        response.raise_for_status()
+    except requests.HTTPError as e:
+        logging.error(f"HTTP Error: {e}")
+        return []
 
-    # Send GET request
-    response = requests.get(url)
-
-    # Initialize BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Locate each GP info using 'results__details' class
     gp_blocks = soup.find_all('div', {'class': 'results__details'})
-
+    
     gp_data = []
     for block in gp_blocks:
         name = block.find('h2', {'id': lambda x: x and x.startswith('orgname_')}).text.strip()
@@ -59,77 +57,23 @@ def scrape_data():
             'Accepts Out of Area Registrations': 'Accepts out of area registrations' in tags_text,
             'Online Registration Available': 'Online registration available' in tags_text
         })
-    
     return gp_data
 
-# Create the table
-create_table()
+def analyze_data():
+    with db_connect() as conn:
+        c = conn.cursor()
+        c.execute("SELECT Name, Average_Rating FROM gp_info WHERE Accepting_New_Patients = 1 ORDER BY Average_Rating DESC LIMIT 10")
+        top_10_gps = c.fetchall()
+    return top_10_gps
 
-# Perform the scrape
-result = scrape_data()
-
-# Insert data into SQLite database
-insert_data(result)
-
-# Function to scrape initial GP URLs
-def scrape_gp_links():
+if __name__ == "__main__":
+    create_table()
     url = "https://www.nhs.uk/service-search/find-a-gp/results/SW12%209LQ"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    gp_links = []
-    
-    # Locate each GP details link
-    for link in soup.find_all('a', {'class': 'nhsapp-open-in-webview'}):
-        href = link.get('href')
-        if not (href.startswith('javascript') or href.startswith('#')):
-            gp_links.append(href)
+    gp_data = scrape_data(url)
+    insert_data(gp_data)
 
-    return gp_links
-
-# Existing scrape_reviews function
-def scrape_reviews(gp_links):
-    for gp_url in gp_links:
-        review_url = f"{gp_url}/ratings-and-reviews"
-        ratings = []
-        try:
-            response = requests.get(review_url)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, 'html.parser')
-            review_blocks = soup.find_all('div', {'class': 'org-review'})
-            
-            for block in review_blocks:
-                rating_text = block.find('p', {'id': re.compile(r'star-rating-.*')}).text.strip()
-                rating_value = float(rating_text.split(' ')[1])
-                ratings.append(rating_value)
-            
-            if ratings:
-                average_rating = sum(ratings) / len(ratings)
-                update_db(gp_url.split('/')[-1], average_rating)
-            
-        except requests.HTTPError as e:
-            print(f"Could not fetch reviews for {gp_url}: {e}")
-
-        time.sleep(2)
-
-# Function to update database
-def update_db(gp_name, avg_rating):
-    conn = sqlite3.connect('gp_data.db')
-    c = conn.cursor()
-    c.execute("UPDATE gp_info SET 'Average_Rating' = ? WHERE Name = ?", (avg_rating, gp_name))
-    conn.commit()
-    conn.close()
-
-# Create the table
-create_table()
-
-# Perform the scrape
-result = scrape_data()
-
-# Insert data into SQLite database
-insert_data(result)
-
-# Scrape the GP links
-gp_links = scrape_gp_links()
-
-# Scrape the reviews
-scrape_reviews(gp_links)
+    # Analyze and get the top 10 GPs
+    top_10_gps = analyze_data()
+    print("Top 10 GPs accepting new patients sorted by rating:")
+    for i, (name, rating) in enumerate(top_10_gps, 1):
+        print(f"{i}. {name} - Rating: {rating}")
