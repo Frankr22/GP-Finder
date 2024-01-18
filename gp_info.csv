@@ -1,29 +1,29 @@
 Name,Address,Phone,Accepting_New_Patients,Accepts_Out_of_Area_Registrations,Online_Registration_Available,Average_Rating
-The Lilyville Surgery,"Parsons Green Health Cent, 5-7 Parsons Green, London, Greater London, SW6 4UL",02077364344,1,1,0,
-Ashville Surgery,"Swan House, Parsons Green Lane, Fulham, London, Greater London, SW6 4HS",02073717171,1,1,0,
+The Lilyville Surgery,"Parsons Green Health Cent, 5-7 Parsons Green, London, Greater London, SW6 4UL",02077364344,1,1,0,5.0
+Ashville Surgery,"Swan House, Parsons Green Lane, Fulham, London, Greater London, SW6 4HS",02073717171,1,1,0,3.1
 "The Surgery, Dr Mangwana & Partners","510 Fulham Palace Road, Fulham, London, Greater London, SW6 6JD",02077366305,1,0,0,
-Cassidy Road Medical Centre,"651A Fulham Road, Fulham, London, Greater London, SW6 5PX",02073844850,1,1,0,
+Cassidy Road Medical Centre,"651A Fulham Road, Fulham, London, Greater London, SW6 5PX",02073844850,1,1,0,3.8
 Sands End Health Clinic,"Bridge House Centre For Health, 1 Broughton Approach Road, Fulham, London, Greater London, SW6 2FE",02030115745,1,0,0,
-"The Medical Centre, Dr Jefferies & Partn","292 Munster Road, Fulham, London, Greater London, SW6 6BQ",02073851965,1,0,0,
+"The Medical Centre, Dr Jefferies & Partn","292 Munster Road, Fulham, London, Greater London, SW6 6BQ",02073851965,1,0,0,1.1666666666666667
 The Fulham Medical Centre,"446 Fulham Road, Fulham, London, Greater London, SW6 1BG",02073856001,1,1,0,
 Fulham Cross Medical Centre,"322 Lillie Road, Fulham, London, Greater London, SW6 7PP",020 7385 1964,1,0,0,
-GP at hand,"139 Lillie Road, Fulham, London, Greater London, SW6 7SX",03303038000,1,0,0,
-Kings Road Medical Centre,"529 Kings Road, Chelsea, London, Greater London, SW10 0UD",02073529568,1,1,0,
+GP at hand,"139 Lillie Road, Fulham, London, Greater London, SW6 7SX",03303038000,1,0,0,1.0
+Kings Road Medical Centre,"529 Kings Road, Chelsea, London, Greater London, SW10 0UD",02073529568,1,1,0,1.5
 Earls Court Surgery,"269 Old Brompton Road, Earls Court, London, Greater London, SW5 9JA",02073702643,1,1,0,
-Earls Court Medical Centre,"248 Earls Court Road, London, Greater London, SW5 9AD",02078351455,1,1,0,
-Belgrave Medical Centre,"The Surgery, 13 Pimlico Road, London, Greater London, SW1W 8NA",02077307030,0,0,0,
+Earls Court Medical Centre,"248 Earls Court Road, London, Greater London, SW5 9AD",02078351455,1,1,0,1.0
+Belgrave Medical Centre,"The Surgery, 13 Pimlico Road, London, Greater London, SW1W 8NA",02077307030,0,0,0,2.8
 Open Door Surgery,"47 Boundaries Road, Balham, London, Greater London, SW12 8EU",02086731476,1,1,0,2.0
 "The Medical Centre, Dr Kukar","13 Ollgar Close, London, Greater London, W12 0NF",02087407407,1,1,0,
 Hammersmith & Fulham Centres For Health,"Hammersmith Hospital, DU Cane Road, Hammersmith, London, Greater London, W12 0HS",0203 313 4100,1,1,0,
 Kings College Health Centre (KCL students and staff only),"3Rd Floor, Bush House, South East Wing, 300 Strand, London, WC2B 4PJ",02045489842,1,1,0,
-Heathbridge Practice,"Heathbridge Med Practice, 125 Upper Richmond Road, Putney, London, Greater London, SW15 2TL",02082464070,1,0,0,
-Putneymead Group Medical Practice,"266 Upper Richmond Road, London, Greater London, SW15 6TQ",0208 788 0686,1,1,0,
+Heathbridge Practice,"Heathbridge Med Practice, 125 Upper Richmond Road, Putney, London, Greater London, SW15 2TL",02082464070,1,0,0,5.0
+Putneymead Group Medical Practice,"266 Upper Richmond Road, London, Greater London, SW15 6TQ",0208 788 0686,1,1,0,3.25
 Triangle Surgery,"Triangle House, 2 Broomhill Road, Wandsworth, London, Greater London, SW18 4HX",02088741700,1,1,0,
-Chatfield Health Care,"Chatfield Road, Battersea, London, Greater London, SW11 3UJ",02037640822,1,1,0,
+Chatfield Health Care,"Chatfield Road, Battersea, London, Greater London, SW11 3UJ",02037640822,1,1,0,4.6
 North Fulham Surgery,"82 Lillie Road, London, SW6 1TN",02074712650,1,1,0,
-North End Medical Centre,"160 North End Road, West Kensington, London, Greater London, W14 9PR",02073857777,1,1,0,
+North End Medical Centre,"160 North End Road, West Kensington, London, Greater London, W14 9PR",02073857777,1,1,0,3.625
 Hammersmith & Fulham Centres For Health (Branch),"Fulham Palace Road, London, Greater London, W6 8RF",02033134100,1,0,0,
-Chartfield Surgery,"The Surgery, 30 Chartfield Avenue, Putney, London, Greater London, SW15 6HG",02087886442,1,1,0,
+Chartfield Surgery,"The Surgery, 30 Chartfield Avenue, Putney, London, Greater London, SW15 6HG",02087886442,1,1,0,5.0
 Wandsworth Medical Centre,"90-92 Garratt Lane, Wandsworth, London, Greater London, SW18 4DD",02030062741,1,1,0,1.8
 Rhnd,"West Hill, London, Greater London, SW15 3SW",020 87804500,0,0,0,
 Haider Practice,"162 St John's Hill, Wandsworth, London, Greater London, SW11 1SW",02038834751,1,1,0,
@@ -33,14 +33,14 @@ Clapham Junction Medical Practice,"7 Farrant House, Winstanley Road, London, Gre
 Brompton Medical Centre,"237-335 Old Brompton Road, London, Greater London, SW5 0EA",02073734102,1,1,0,
 The Good Practice,"Kings Road, London, Greater London, SW10 0LR",02073511766,1,0,0,
 The Roehampton Surgery,"105 Carslake Road, Putney, London, Greater London, SW15 3DD",02087856440,1,0,0,
-Falcon Road Medical Centre,"47 Falcon Road, Battersea, London, Greater London, SW11 2PH",02072281619,1,1,0,
+Falcon Road Medical Centre,"47 Falcon Road, Battersea, London, Greater London, SW11 2PH",02072281619,1,1,0,4.0
 Junction Health Centre,"Arch 5-7 Clapham J Stn, Grant Road, Clapham Junction, London, Greater London, SW11 2NU",0300 130 3333,1,0,0,3.0
 Glebe Road Surgery,"Glebe Road Surgery, 1 Glebe Road, Barnes, London, Greater London, SW13 0DR",02087487398,1,0,0,
-"Health and Wellbeing Centre, Earls Court","2B Hogarth Road, London, Greater London, SW5 0PT",02070527540,1,1,0,
+"Health and Wellbeing Centre, Earls Court","2B Hogarth Road, London, Greater London, SW5 0PT",02070527540,1,1,0,3.6
 Hammersmith Surgery,"1 Hammersmith Bridge Road, Hammersmith, London, Greater London, W6 9DU",02087413944,1,0,0,
-Bridge Lane Group Practice,"Bridge Lane Health Centre, 20 Bridge Lane, Battersea, London, SW11 3AD",02035380882,1,0,0,
+Bridge Lane Group Practice,"Bridge Lane Health Centre, 20 Bridge Lane, Battersea, London, SW11 3AD",02035380882,1,0,0,5.0
 Meadbank Care Home GP Surgery,"12 Parkgate Road, London, Greater London, SW11 4NN",020 88741121,1,0,0,
-Brocklebank Group Practice,"249 Garratt Lane, Wandsworth, London, Greater London, SW18 4DU",0203 818 8270,1,0,0,
+Brocklebank Group Practice,"249 Garratt Lane, Wandsworth, London, Greater London, SW18 4DU",0203 818 8270,1,0,0,4.0
 Rosary Garden Surgery,"45 Rosary Gardens, London, Greater London, SW7 4NQ",02073736557,1,0,0,
 The Abingdon Health Centre,"88-92 Earls Court Road, Kensington, London, Greater London, W8 6EG",02077958470,1,1,0,
 Essex House Surgery,"Station Road, Barnes, London, SW13 0LW",02088761033,1,1,0,
@@ -48,4 +48,4 @@ Brook Green Medical Centre,"Bute Gardens, Hammersmith, London, Greater London, W
 Tudor Lodge Health Centre,"8C Victoria Drive, Wimbledon, London, Greater London, SW19 6AE",02087800125,1,1,0,
 Kensington Park Medical Centre,"75 Russell Road, London, Greater London, W14 8HW",020 7371 6060,1,0,0,
 Bolingbroke Medical Centre,"Wakehurst Road, Battersea, London, Greater London, SW11 6BF",02078011460,1,1,0,
-Stanhope Mews Surgery,"7 Stanhope Mews West, London, Greater London, SW7 5RB",02078350400,1,1,0,
+Stanhope Mews Surgery,"7 Stanhope Mews West, London, Greater London, SW7 5RB",02078350400,1,1,0,4.75
